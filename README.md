@@ -51,6 +51,52 @@ The final score is a weighted composite: `E = α·H_cognitive + β·H_structural
 
 ---
 
+## Building
+
+**Prerequisites**
+- CMake 3.14+
+- LLVM 17+ with libclang (see below)
+- A C++17-capable compiler
+**1. Install LLVM**
+
+| Platform | Command |
+|---|---|
+| macOS (Apple Silicon) | `brew install llvm` |
+| macOS (Intel) | `brew install llvm` |
+| Ubuntu / Debian | `sudo apt install llvm-17 libclang-17-dev` |
+
+**2. Set `LLVM_ROOT`**
+
+Point `LLVM_ROOT` at your LLVM installation before configuring. This is the only setup step required — no paths are hardcoded in the build system.
+
+```bash
+# macOS Apple Silicon
+export LLVM_ROOT=/opt/homebrew/opt/llvm
+
+# macOS Intel
+export LLVM_ROOT=/usr/local/opt/llvm
+
+# Linux
+export LLVM_ROOT=/usr/lib/llvm-17
+```
+
+**3. Build**
+
+```bash
+cmake --preset default      # configure (Debug)
+cmake --build --preset default
+ctest --preset default      # run tests
+```
+
+For a release build:
+
+```bash
+cmake --preset release
+cmake --build --preset release
+```
+
+---
+
 ## Status
 
 > Early design phase. Architecture and metric design in progress.
