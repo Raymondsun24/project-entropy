@@ -1,4 +1,7 @@
-add_library(entropy_core STATIC entropy_core.cpp)
+add_library(entropy_core STATIC
+    entropy_core.cpp
+    preset.cpp
+)
 
 target_include_directories(entropy_core
     PUBLIC
